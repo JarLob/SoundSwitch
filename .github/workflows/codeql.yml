@@ -7,10 +7,6 @@ on:
   schedule:
     - cron: "52 1 * * 2"
     
-env:
-  # Stop wasting time caching packages
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-
 jobs:
   compare:
     runs-on: ubuntu-latest
@@ -69,13 +65,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - uses: actions/cache@v2
-      with:
-        path: ~/.nuget/packages
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.config') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget
+
     - name: Restore
       run: dotnet restore
     - name: Build
