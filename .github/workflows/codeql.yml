@@ -67,7 +67,7 @@ jobs:
         dotnet-version: 5.0.x
 
     - name: Restore
-      run: dotnet restore
+      run: nuget restore
     - name: Build
       run: dotnet build -c Release --no-restore SoundSwitch/SoundSwitch.csproj
 
