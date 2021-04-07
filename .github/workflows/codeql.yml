@@ -6,6 +6,10 @@ on:
         default: false
   schedule:
     - cron: "52 1 * * 2"
+    
+env:
+  # Stop wasting time caching packages
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 jobs:
   compare:
